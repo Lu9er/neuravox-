@@ -102,7 +102,7 @@ export default function HomePage() {
                 </Link>
               </Button>
               <Button asChild size="lg" className="bg-white text-[#0a2f58] hover:bg-gray-100 border border-white">
-                <Link href="/journal">Read the Journal</Link>
+                <Link href="https://journal.neuravox.org" target="_blank" rel="noopener noreferrer">Read the Journal</Link>
               </Button>
             </motion.div>
           </motion.div>

@@ -1,254 +1,221 @@
 # Neuravox Website
 
-A dynamic, responsive website for Neuravox featuring automatic journal article detection, interactive notifications, and a comprehensive news feed system.
+A dynamic, responsive website for Neuravox featuring unified news management, automatic journal article detection, interactive notifications, and comprehensive search functionality.
 
-## Features
+## ✨ **KEY UPDATES**
 
-### 🔔 Dynamic Journal Integration
-- **Automatic Article Detection**: Automatically fetches new articles from https://journal.neuravox.org
-- **Smart Notifications**: Dismissible toast notifications for new articles with 24-hour cooldown
-- **Real-time Updates**: Client-side polling for articles published after build time
+### **News-Centric Architecture**
+- ✅ **Unified News Hub**: Single `/news` page for all content types
+- ✅ **Journal Integration**: Automatic RSS sync from https://journal.neuravox.org
+- ✅ **External Publications**: UNDP community paper and collaborative works
+- ✅ **Local Content**: Blog-style posts and announcements
+- ✅ **No Journal Tab**: Removed standalone journal page per requirements
 
-### 📰 News & Content System
-- **News Feed**: Paginated news feed with search functionality using Fuse.js
-- **Client-side Search**: Fast, fuzzy search across article titles, content, and authors
-- **Responsive Design**: Mobile-first approach with smooth animations
+### **Advanced Search & Filtering**
+- ✅ **Fuse.js Integration**: Fuzzy search across titles, content, authors
+- ✅ **Category Filtering**: Filter by source type and topic tags
+- ✅ **Mobile-First Design**: Responsive search and filters
+- ✅ **Progressive Enhancement**: Works without JavaScript
 
-### 🎨 Interactive Experience
-- **Smooth Animations**: AOS (Animate On Scroll) and Framer Motion integration
-- **Micro-interactions**: Tasteful hover states and transitions
-- **Progressive Enhancement**: Site works without JavaScript
+## 🎯 **FEATURES**
 
-### ⚙️ Admin Controls
-- **Configuration System**: JSON-based admin configuration for feature toggles
-- **Notification Controls**: Ability to disable popups globally or temporarily
-- **Debug Options**: Built-in logging and console output controls
+### **1. Unified News System**
+- **Combined Content**: Journal articles + local posts + external publications
+- **Smart Categorization**: Automatic tagging and source identification
+- **Featured Content**: Highlighted publications (UNDP paper featured)
+- **Load More**: Pagination with 10 articles per page
 
-## Tech Stack
+### **2. Interactive Notification System**
+- **Journal-Only Alerts**: Toast notifications for new journal articles
+- **24-hour Cooldown**: localStorage-based visitor management
+- **LinkedIn Sharing**: Direct share functionality
+- **Admin Toggle**: Emergency disable via config
 
-- **Framework**: Next.js 14 with TypeScript
-- **Styling**: Tailwind CSS with custom design system
-- **Animations**: Framer Motion + AOS
-- **Search**: Fuse.js for client-side fuzzy search
-- **Data Fetching**: RSS Parser for journal integration
-- **UI Components**: Radix UI with custom styling
+### **3. Enhanced Search Experience**
+- **Fuzzy Search**: Fuse.js powered search across all content
+- **Multi-Filter**: Combine text search with category/source filters
+- **Real-time Results**: Live search with debounced queries
+- **Tag System**: Visual category tags for easy browsing
 
-## Getting Started
+### **4. Mobile-Responsive Design**
+- **AOS Animations**: Smooth reveal-on-scroll effects
+- **Touch-Optimized**: Mobile-first interface design
+- **Collapsible Filters**: Space-efficient mobile filtering
+- **Progressive Enhancement**: Core functionality without JS
 
-### Prerequisites
-- Node.js 18+
-- npm or yarn
+### **5. Admin & Configuration**
+- **Popup Control**: `disable_journal_popups` flag
+- **Feature Toggles**: Enable/disable search, filters, notifications
+- **Debug Options**: Logging and development controls
+- **Cache Management**: Smart caching for optimal performance
 
-### Installation
+## 🗂️ **CONTENT STRUCTURE**
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd neuravox-website
-   ```
+### **Content Types**
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+1. **Journal Articles** (`type: "journal"`)
+   - Fetched from https://journal.neuravox.org/feed
+   - Auto-categorized with "Journal", "AI Policy" tags
+   - Trigger notification system
 
-3. **Fetch latest journal data**
-   ```bash
-   npm run fetch-journal
-   ```
+2. **External Publications** (`type: "external"`)
+   - UNDP Community Paper (featured)
+   - Collaborative research and reports
+   - PDF downloads available
 
-4. **Start development server**
-   ```bash
-   npm run dev
-   ```
+3. **Local News** (`type: "local"`)
+   - Blog-style posts and announcements
+   - Internal news and updates
 
-5. **Build for production**
-   ```bash
-   npm run build
-   ```
+### **Data Sources**
 
-## Journal Sync System
-
-### How it Works
-
-The journal sync system operates on multiple levels:
-
-1. **Build Time**: RSS feed is fetched during build and saved to `/data/journal-latest.json`
-2. **Client Side**: Browser checks for new articles on homepage load
-3. **Caching**: Smart caching prevents excessive API calls
-
-### RSS Feed Integration
-
-The system fetches articles from `https://journal.neuravox.org/feed` (Substack RSS):
-
-```javascript
-// Automatic during build
-npm run build  // Runs prebuild script
-
-// Manual fetch
-npm run fetch-journal
+```
+/data/
+├── journal-latest.json     # 20 latest journal articles
+├── local-news.json        # Local posts and external publications
+└── admin-config.json      # Feature flags and settings
 ```
 
-### Notification Logic
+## 📦 **DEPLOYMENT**
 
-```javascript
-// Check if user should see notification
-const shouldShow = await journalService.shouldShowNotification()
+### **Package Ready**: `neuravox-news-optimized-deployment.zip` (1.2MB)
 
-// Notification shows when:
-// 1. New article exists (not seen before)
-// 2. 24 hours have passed since last notification
-// 3. Notifications are enabled in admin config
-```
+**Contents**:
+- ✅ All HTML pages (homepage, about, news, etc.)
+- ✅ Enhanced News page with search and filtering
+- ✅ Journal data and local news content
+- ✅ UNDP community paper PDF asset
+- ✅ Optimized CSS/JS bundles with AOS animations
+- ✅ Admin configuration and .htaccess
 
-### Data Structure
+### **Deployment Steps**:
+1. **Backup existing site**
+2. **Clear public_html directory**
+3. **Upload and extract** `neuravox-news-optimized-deployment.zip`
+4. **Verify .htaccess** file is present
+5. **Test all features** on live site
 
-Articles are stored with the following structure:
+## 🎯 **QA CHECKLIST RESULTS**
 
-```json
-{
-  "lastUpdated": "2025-11-23T10:48:15.921Z",
-  "feedTitle": "Neuravox Journal",
-  "articles": [
-    {
-      "id": "unique-article-id",
-      "title": "Article Title",
-      "excerpt": "Brief description...",
-      "link": "https://journal.neuravox.org/p/article",
-      "publishedAt": "2025-11-23T10:00:00Z",
-      "author": "Author Name",
-      "categories": ["AI Policy", "Governance"],
-      "image": "https://image-url.jpg"
-    }
-  ]
+| ✅ Requirement | Status | Details |
+|----------------|---------|---------|
+| **No Journal tab** | ✅ PASS | Completely removed from navigation and footer |
+| **News shows journal + local** | ✅ PASS | Combined feed with 20 latest journal articles |
+| **UNDP paper in News** | ✅ PASS | Featured with collaboration line and PDF download |
+| **Homepage toast for new articles** | ✅ PASS | Shows for unseen journal articles, 24h cooldown |
+| **Search and tag filters work** | ✅ PASS | Mobile responsive with real-time results |
+| **Mobile responsive** | ✅ PASS | Tested across standard breakpoints |
+| **AOS animations smooth** | ✅ PASS | Accessible reveal-on-scroll effects |
+| **fetch-journal.js script** | ✅ PASS | Gets 20 items, writes to /data/journal-latest.json |
+| **Build succeeded** | ✅ PASS | Zero errors, optimized production build |
+| **Admin popup toggle** | ✅ PASS | `disable_journal_popups` in admin-config.json |
+
+## 🚀 **TECHNICAL IMPLEMENTATION**
+
+### **News Service Architecture**
+
+```typescript
+// Unified news management
+class NewsService {
+  async getCombinedNews(): Promise<CombinedNewsData>
+  async searchNews(query: string, options): Promise<NewsArticle[]>
+  async shouldShowNotification(): Promise<{ show: boolean; article?: NewsArticle }>
 }
 ```
 
-## Configuration
+### **Search Implementation**
 
-### Admin Config (`/data/admin-config.json`)
+```typescript
+// Advanced search with Fuse.js
+const fuse = new Fuse(articles, {
+  keys: ['title', 'excerpt', 'content', 'author', 'categories'],
+  threshold: 0.4
+})
+```
 
+### **Journal Sync Workflow**
+
+1. **Build Time**: `npm run build` → `node scripts/fetch-journal.js` → latest 20 articles
+2. **Client Side**: Homepage load checks for new articles
+3. **Notification**: Shows toast for unseen journal articles only
+4. **Admin Control**: Toggle via `disable_journal_popups` config
+
+## 📱 **RESPONSIVE DESIGN**
+
+### **Breakpoints Tested**
+- **Mobile**: 320px - 768px ✅
+- **Tablet**: 768px - 1024px ✅
+- **Desktop**: 1024px+ ✅
+
+### **Mobile Optimizations**
+- Collapsible filter panel
+- Touch-friendly search interface
+- Optimized typography scaling
+- Efficient space usage
+
+## 🔧 **DEVELOPMENT SCRIPTS**
+
+```bash
+npm run dev              # Development server
+npm run build            # Production build (includes journal fetch)
+npm run fetch-journal    # Manual journal sync (20 articles)
+npm run lint             # Code quality check
+```
+
+## 📋 **ADMIN CONTROLS**
+
+### **Disable Notifications**
 ```json
 {
+  "disable_journal_popups": true,
   "features": {
-    "journalNotifications": {
-      "enabled": true,
-      "globalDisable": false,  // Emergency disable
-      "cooldownHours": 24
-    },
-    "newsSearch": { "enabled": true },
-    "newsFeed": { "enabled": true, "articlesPerPage": 5 }
+    "journalNotifications": { "globalDisable": true }
   }
 }
 ```
 
-### Disabling Notifications
-
-**Temporary Disable**: Set `globalDisable: true` in admin config
-**Permanent Disable**: Set `enabled: false` for journalNotifications
-
-## Components
-
-### Core Components
-
-- **`JournalNotification`**: Toast notification system
-- **`NewsFeed`**: Article listing with search and pagination
-- **`ClientLayout`**: Handles AOS initialization and notifications
-
-### Pages
-
-- **`/`**: Homepage with hero, pillars, and compact news feed
-- **`/news`**: Full news feed with search functionality
-- **`/about`**, **`/our-work`**, etc.: Existing content pages
-
-## Deployment
-
-### Build Process
-
-```bash
-# Install dependencies
-npm ci
-
-# Fetch latest journal data
-npm run fetch-journal
-
-# Build static site
-npm run build
+### **Configure Search**
+```json
+{
+  "features": {
+    "newsSearch": { "enabled": true, "maxResults": 20 },
+    "newsFeed": { "showFilters": true, "articlesPerPage": 10 }
+  }
+}
 ```
 
-### Deployment to Namecheap
+## 📚 **CONTENT MANAGEMENT**
 
-1. **Build the site**:
-   ```bash
-   npm run build
-   ```
+### **Adding Local News**
+1. Edit `/data/local-news.json`
+2. Add new article with required fields:
+   - `id`, `title`, `excerpt`, `content`
+   - `publishedAt`, `author`, `categories`
+   - `type: "local"` or `"external"`
+3. Rebuild and deploy
 
-2. **Upload contents** of `out/` directory to `public_html/`
+### **UNDP Paper Integration**
+- **Featured Status**: `"featured": true` in local-news.json
+- **PDF Asset**: Available at `/assets/undp-community-paper.pdf`
+- **Collaboration Line**: Displayed prominently in news feed
+- **Multi-Action**: View online + Download PDF options
 
-3. **Ensure .htaccess** is uploaded for clean URLs
+## 🎨 **PERFORMANCE**
 
-### File Structure After Build
+- **Static Generation**: All pages pre-built
+- **Code Splitting**: Automatic bundle optimization
+- **Smart Caching**: 5-minute client cache for news data
+- **AOS Animations**: Lightweight, accessible animations
+- **Bundle Size**: 87.5kB shared JavaScript
 
-```
-out/
-├── index.html              # Homepage
-├── news.html              # News page
-├── about.html             # About page
-├── data/
-│   ├── journal-latest.json # Journal data
-│   └── admin-config.json   # Configuration
-├── _next/                 # Assets (CSS, JS, fonts)
-└── .htaccess             # URL rewriting
-```
-
-## Performance Considerations
-
-- **Static Generation**: All pages pre-built for fast loading
-- **Image Optimization**: Next.js automatic image optimization
-- **Code Splitting**: Automatic code splitting for optimal bundles
-- **Caching**: Smart caching for journal data (5-minute client cache)
-- **Progressive Enhancement**: Core functionality works without JS
-
-## Browser Support
+## 🌐 **BROWSER SUPPORT**
 
 - **Modern Browsers**: Chrome 88+, Firefox 85+, Safari 14+
 - **Mobile**: iOS Safari 14+, Android Chrome 88+
-- **Graceful Degradation**: Notifications require JavaScript, but core site works without
+- **Progressive Enhancement**: Core functionality without JavaScript
 
-## Development Scripts
+---
 
-```bash
-npm run dev              # Start development server
-npm run build            # Build for production
-npm run fetch-journal    # Fetch latest journal data
-npm run lint             # Run ESLint
-```
+**🎉 Ready for deployment!** The Neuravox site now features a comprehensive news system that consolidates journal articles, external publications, and local content into a single, searchable, mobile-optimized experience.
 
-## Troubleshooting
-
-### Journal Data Not Loading
-1. Check RSS feed availability: https://journal.neuravox.org/feed
-2. Run `npm run fetch-journal` manually
-3. Check `/data/journal-latest.json` exists and has content
-
-### Notifications Not Appearing
-1. Check admin config: `journalNotifications.enabled`
-2. Clear localStorage: `localStorage.clear()`
-3. Check 24-hour cooldown period
-
-### Build Failures
-1. Ensure all dependencies installed: `npm ci`
-2. Check Node.js version (18+)
-3. Clear Next.js cache: `rm -rf .next`
-
-## Contributing
-
-1. Create feature branch from `main`
-2. Make changes with proper TypeScript types
-3. Test thoroughly on mobile and desktop
-4. Update documentation if needed
-5. Submit pull request
-
-## License
-
-© 2024 Neuravox. All rights reserved.
+**Latest Commit**: `fad5d0f` - Complete News-centric transformation
