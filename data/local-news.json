@@ -1,0 +1,20 @@
+{
+  "lastUpdated": "2025-11-23T11:00:00.000Z",
+  "articles": [
+    {
+      "id": "undp-language-ai-community-paper",
+      "title": "Scaling AI for Language: Community-Driven Approaches to Multilingual AI Development — UNDP & Neuravox",
+      "excerpt": "A collaborative community paper exploring pathways for scaling AI language technologies through community partnerships and multilateral cooperation.",
+      "content": "A comprehensive analysis of community-driven approaches to multilingual AI development, examining how international partnerships can accelerate inclusive language technology deployment across diverse communities.",
+      "link": "/assets/undp-community-paper.pdf",
+      "externalLink": "https://journal.neuravox.org",
+      "publishedAt": "2024-11-01T10:00:00Z",
+      "author": "UNDP & Neuravox",
+      "categories": ["UNDP", "Language AI", "Community Paper", "Scaling AI", "Collaboration"],
+      "type": "external",
+      "collaboration": "A collaborative community paper — Neuravox (contributor) with UNDP and partners.",
+      "image": null,
+      "featured": true
+    }
+  ]
+}

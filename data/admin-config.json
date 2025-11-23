@@ -12,10 +12,12 @@
     },
     "newsFeed": {
       "enabled": true,
-      "articlesPerPage": 5,
-      "showImages": true
+      "articlesPerPage": 10,
+      "showImages": true,
+      "showFilters": true
     }
   },
+  "disable_journal_popups": false,
   "journal": {
     "rssUrl": "https://journal.neuravox.org/feed",
     "fetchIntervalMinutes": 60,

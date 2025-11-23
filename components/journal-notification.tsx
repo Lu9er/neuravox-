@@ -5,14 +5,14 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { X, ExternalLink, Share2, BookOpen } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
-import { useJournalNotification, JournalArticle } from '@/lib/journal'
+import { useNewsNotification, NewsArticle } from '@/lib/news'
 
 interface JournalNotificationProps {
   onDismiss?: () => void
 }
 
 export function JournalNotification({ onDismiss }: JournalNotificationProps) {
-  const { notification, dismissNotification } = useJournalNotification()
+  const { notification, dismissNotification } = useNewsNotification()
   const [isVisible, setIsVisible] = useState(true)
 
   if (!notification.show || !notification.article || !isVisible) {
@@ -28,12 +28,14 @@ export function JournalNotification({ onDismiss }: JournalNotificationProps) {
   }
 
   const handleRead = () => {
-    window.open(article.link, '_blank')
+    const url = article.externalLink || article.link
+    window.open(url, '_blank')
     handleDismiss()
   }
 
   const handleShare = () => {
-    const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(article.link)}`
+    const url = article.externalLink || article.link
+    const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`
     window.open(linkedInUrl, '_blank', 'width=600,height=400')
   }
 

@@ -24,7 +24,7 @@ async function fetchJournalData() {
   try {
     const feed = await parser.parseURL(RSS_URL);
 
-    const articles = feed.items.slice(0, 10).map(item => {
+    const articles = feed.items.slice(0, 20).map(item => {
       // Extract first paragraph for excerpt
       const contentHtml = item.content || item.description || '';
       const textContent = contentHtml.replace(/<[^>]*>/g, ''); // Strip HTML

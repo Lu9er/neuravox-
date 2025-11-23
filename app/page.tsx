@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { ArrowRight, Globe, Shield, FileText, Brain, Users, Lightbulb, Newspaper } from "lucide-react"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import NewsFeed from "@/components/news-feed"
+import EnhancedNewsFeed from "@/components/enhanced-news-feed"
 
 const pillars = [
   {
@@ -130,12 +130,14 @@ export default function HomePage() {
           </motion.div>
 
           <div data-aos="fade-up" data-aos-delay="200">
-            <NewsFeed
+            <EnhancedNewsFeed
               showSearch={false}
               articlesPerPage={3}
               showPagination={false}
               showImages={true}
               compact={true}
+              showFilters={false}
+              featuredFirst={true}
             />
           </div>
 
