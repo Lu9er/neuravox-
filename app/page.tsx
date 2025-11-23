@@ -2,9 +2,10 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { ArrowRight, Globe, Shield, FileText, Brain, Users, Lightbulb } from "lucide-react"
+import { ArrowRight, Globe, Shield, FileText, Brain, Users, Lightbulb, Newspaper } from "lucide-react"
 import Link from "next/link"
 import { motion } from "framer-motion"
+import NewsFeed from "@/components/news-feed"
 
 const pillars = [
   {
@@ -109,8 +110,53 @@ export default function HomePage() {
       </section>
 
 
+      {/* Latest News Section */}
+      <section className="py-20 bg-white" data-aos="fade-up">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <Newspaper className="h-8 w-8 text-[#051bccd]" />
+              <h2 className="text-3xl lg:text-4xl font-bold text-[#0a2f58]">Latest Insights</h2>
+            </div>
+            <p className="text-xl text-[#1a1a1a] max-w-3xl mx-auto">
+              Fresh perspectives on AI governance and policy from our journal
+            </p>
+          </motion.div>
+
+          <div data-aos="fade-up" data-aos-delay="200">
+            <NewsFeed
+              showSearch={false}
+              articlesPerPage={3}
+              showPagination={false}
+              showImages={true}
+              compact={true}
+            />
+          </div>
+
+          <motion.div
+            className="text-center mt-12"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <Button asChild variant="outline" size="lg" className="border-[#046a83] text-[#046a83] hover:bg-[#046a83] hover:text-white">
+              <Link href="/news">
+                View All Articles <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Six Pillars Section */}
-      <section className="py-20 bg-[#ebf3f6]">
+      <section className="py-20 bg-[#ebf3f6]" data-aos="fade-up">
         <div className="container mx-auto px-4">
           <motion.div
             className="text-center mb-16"
@@ -133,7 +179,7 @@ export default function HomePage() {
             viewport={{ once: true }}
           >
             {pillars.map((pillar, index) => (
-              <motion.div key={index} variants={itemVariants}>
+              <motion.div key={index} variants={itemVariants} data-aos="fade-up" data-aos-delay={index * 100}>
                 <Card className="h-full hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-0 shadow-md">
                   <CardContent className="p-8">
                     <div className="w-16 h-16 bg-[#046a83] rounded-lg flex items-center justify-center mb-6">
@@ -150,7 +196,7 @@ export default function HomePage() {
       </section>
 
       {/* Call to Action Section */}
-      <section className="py-20 bg-[#1d4e63] text-white">
+      <section className="py-20 bg-[#1d4e63] text-white" data-aos="fade-up">
         <div className="container mx-auto px-4">
           <motion.div
             className="max-w-4xl mx-auto text-center"

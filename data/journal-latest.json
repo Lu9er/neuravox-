@@ -1,0 +1,64 @@
+{
+  "lastUpdated": "2025-11-23T10:53:10.413Z",
+  "feedTitle": "Neuravox Journal",
+  "feedDescription": "Neuravox Journal publishes sharp, independent writing on AI policy, governance and public interest, with a focus on Africa and globally relevant perspectives.",
+  "articles": [
+    {
+      "id": "https://journal.neuravox.org/p/can-multilateral-actors-co-develop",
+      "title": "Can multilateral actors co-develop and fund modular AI governance toolkits for African governments to adapt, pilot and localize?",
+      "excerpt": "Research Commentary",
+      "content": "Research Commentary",
+      "link": "https://journal.neuravox.org/p/can-multilateral-actors-co-develop",
+      "publishedAt": "Sun, 06 Jul 2025 16:59:01 GMT",
+      "author": "Neuravox Policy Lab",
+      "categories": [],
+      "image": "https://substackcdn.com/image/fetch/$s_!w4Lt!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa429ff2f-0d51-4438-8832-62082950c2cc_497x497.png"
+    },
+    {
+      "id": "https://journal.neuravox.org/p/what-would-an-african-ai-act-look",
+      "title": "What Would an African AI Act Look Like?",
+      "excerpt": "Commentary",
+      "content": "Commentary",
+      "link": "https://journal.neuravox.org/p/what-would-an-african-ai-act-look",
+      "publishedAt": "Thu, 12 Jun 2025 12:02:30 GMT",
+      "author": "Gideon Abako",
+      "categories": [],
+      "image": "https://substackcdn.com/image/fetch/$s_!L4Ty!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F39232798-debc-47ab-864b-41f563057b4b_1536x1024.png"
+    },
+    {
+      "id": "https://journal.neuravox.org/p/africas-ai-governance-accelerates",
+      "title": "Africa’s AI Governance Accelerates",
+      "excerpt": "Policy Spotlight",
+      "content": "Policy Spotlight",
+      "link": "https://journal.neuravox.org/p/africas-ai-governance-accelerates",
+      "publishedAt": "Mon, 09 Jun 2025 06:01:31 GMT",
+      "author": "Neuravox Policy Lab",
+      "categories": [],
+      "image": "https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F33453c2c-f4a7-448f-9e0a-4314c13b5f08_1536x1504.png"
+    },
+    {
+      "id": "https://journal.neuravox.org/p/compute-governance-for-ai-safety",
+      "title": "Compute governance for AI safety in Nigeria and Kenya",
+      "excerpt": "Policy brief on closing infrastructure and policy gaps",
+      "content": "Policy brief on closing infrastructure and policy gaps",
+      "link": "https://journal.neuravox.org/p/compute-governance-for-ai-safety",
+      "publishedAt": "Sat, 07 Jun 2025 15:34:19 GMT",
+      "author": "Neuravox Policy Lab",
+      "categories": [],
+      "image": "https://substackcdn.com/image/fetch/$s_!2P-_!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F73f4f63a-2bd2-48b5-8e5b-47233a05655b_2400x1600.heic"
+    },
+    {
+      "id": "https://journal.neuravox.org/p/african-ai-adoption-trends-2025",
+      "title": "African AI Adoption Trends 2025",
+      "excerpt": "Africa is experiencing a remarkable transformation in artificial intelligence adoption, with investments reaching unprecedented levels and innovative ...",
+      "content": "Africa is experiencing a remarkable transformation in artificial intelligence adoption, with investments reaching unprecedented levels and innovative applications emerging across key sectors. This comprehensive analysis examines AI development trends across 17 African countries, supported by an interactive dashboard and strategic recommendations for stakeholders driving digital transformation.",
+      "link": "https://journal.neuravox.org/p/african-ai-adoption-trends-2025",
+      "publishedAt": "Sat, 31 May 2025 08:59:27 GMT",
+      "author": "Gideon Abako",
+      "categories": [],
+      "image": "https://substackcdn.com/image/fetch/$s_!ZJvW!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdab1401c-f910-44b1-afed-7e2ce5620191_1536x1024.png"
+    }
+  ],
+  "latestArticleId": "https://journal.neuravox.org/p/can-multilateral-actors-co-develop",
+  "latestArticleDate": "Sun, 06 Jul 2025 16:59:01 GMT"
+}
