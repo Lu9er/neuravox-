@@ -7,7 +7,7 @@ const navigation = {
   main: [
     { name: "About", href: "/about" },
     { name: "Our Work", href: "/our-work" },
-    { name: "Journal", href: "/journal" },
+    { name: "News", href: "/news" },
     { name: "Policy Lab", href: "/policy-lab" },
     { name: "Partners", href: "/partners" },
     { name: "Contact", href: "/contact" },
