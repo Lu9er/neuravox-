@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 
 const RSS_URL = 'https://journal.neuravox.org/feed';
-const DATA_FILE = path.join(__dirname, '..', 'data', 'journal-latest.json');
+const DATA_FILE = path.join(__dirname, '..', 'public', 'data', 'journal-latest.json');
 
 async function fetchJournalData() {
   console.log('Fetching journal data from RSS feed...');

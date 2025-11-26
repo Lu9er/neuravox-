@@ -1,0 +1,37 @@
+{
+  "features": {
+    "journalNotifications": {
+      "enabled": true,
+      "globalDisable": false,
+      "cooldownHours": 24,
+      "maxNotificationsPerDay": 3
+    },
+    "newsSearch": {
+      "enabled": true,
+      "maxResults": 20
+    },
+    "newsFeed": {
+      "enabled": true,
+      "articlesPerPage": 10,
+      "showImages": true,
+      "showFilters": true
+    }
+  },
+  "disable_journal_popups": false,
+  "journal": {
+    "rssUrl": "https://journal.neuravox.org/feed",
+    "fetchIntervalMinutes": 60,
+    "cacheExpiryHours": 6
+  },
+  "ui": {
+    "enableAnimations": true,
+    "reducedMotion": false,
+    "showBranding": true
+  },
+  "debug": {
+    "logLevel": "info",
+    "enableConsoleOutput": false
+  },
+  "lastModified": "2025-11-23T10:48:15.921Z",
+  "version": "1.0.0"
+}
