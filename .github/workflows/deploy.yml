@@ -61,6 +61,6 @@ jobs:
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: out/
-          server-dir: ${{ secrets.FTP_PATH }}
+          server-dir: ${{ secrets.FTP_PATH }}/
           # optional flags to speed up/fail safe (leave commented if you want defaults)
           # git-ftp-args: --includepath out
