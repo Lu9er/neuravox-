@@ -68,9 +68,37 @@ class NewsService {
         const localResponse = await fetch('/data/local-news.json');
         const localData: LocalNewsData = await localResponse.json();
 
-        // Fetch journal data
-        const journalResponse = await fetch('/data/journal-latest.json');
-        const journalData: JournalData = await journalResponse.json();
+        // Fetch journal data from API first, fallback to static file
+        let journalData: JournalData;
+        try {
+          const journalResponse = await fetch('/api/journal');
+          const apiData = await journalResponse.json();
+
+          // Transform API response to match expected JournalData format
+          journalData = {
+            lastUpdated: apiData.lastUpdated,
+            feedTitle: 'Neuravox Journal',
+            feedDescription: 'Neuravox Journal publishes sharp, independent writing on AI policy, governance and public interest, with a focus on Africa and globally relevant perspectives.',
+            articles: apiData.articles.map((article: any) => ({
+              id: article.link || `article-${Date.now()}`,
+              title: article.title,
+              excerpt: article.summary || '',
+              content: article.summary || '',
+              link: article.link,
+              publishedAt: article.isoDate || new Date().toISOString(),
+              author: article.author || 'Neuravox',
+              categories: ['Journal', 'AI Policy'],
+              image: article.image
+            })),
+            latestArticleId: apiData.articles.length > 0 ? (apiData.articles[0].link || null) : null,
+            latestArticleDate: apiData.articles.length > 0 ? (apiData.articles[0].isoDate || null) : null
+          };
+        } catch (apiError) {
+          console.warn('Failed to fetch from API, falling back to static file:', apiError);
+          // Fallback to static file
+          const fallbackResponse = await fetch('/data/journal-latest.json');
+          journalData = await fallbackResponse.json();
+        }
 
         // Transform journal articles to match NewsArticle interface
         const journalArticles: NewsArticle[] = journalData.articles.map(article => ({

@@ -81,26 +81,54 @@ class JournalService {
 
     if (shouldRefresh) {
       try {
-        // First try static data from build
-        const response = await fetch('/data/journal-latest.json');
-        const staticData: JournalData = await response.json();
+        // First try API endpoint for fresh data
+        try {
+          const apiResponse = await fetch('/api/journal');
+          const apiData = await apiResponse.json();
 
-        // Check if data is recent enough
-        const dataAge = now - new Date(staticData.lastUpdated).getTime();
-        const maxAge = 6 * 60 * 60 * 1000; // 6 hours
-
-        if (dataAge < maxAge) {
-          this.journalData = staticData;
+          // Transform API response to match expected JournalData format
+          this.journalData = {
+            lastUpdated: apiData.lastUpdated,
+            feedTitle: 'Neuravox Journal',
+            feedDescription: 'Neuravox Journal publishes sharp, independent writing on AI policy, governance and public interest, with a focus on Africa and globally relevant perspectives.',
+            articles: apiData.articles.map((article: any) => ({
+              id: article.link || `article-${Date.now()}`,
+              title: article.title,
+              excerpt: article.summary || '',
+              content: article.summary || '',
+              link: article.link,
+              publishedAt: article.isoDate || new Date().toISOString(),
+              author: article.author || 'Neuravox',
+              categories: ['Journal', 'AI Policy'],
+              image: article.image
+            })),
+            latestArticleId: apiData.articles.length > 0 ? (apiData.articles[0].link || null) : null,
+            latestArticleDate: apiData.articles.length > 0 ? (apiData.articles[0].isoDate || null) : null
+          };
           this.lastFetch = now;
-        } else {
-          // Try to fetch fresh data (fallback to static if it fails)
-          try {
-            const freshData = await this.fetchFreshData();
-            this.journalData = freshData;
-          } catch {
+        } catch (apiError) {
+          console.warn('Failed to fetch from API, falling back to static file:', apiError);
+          // Fallback to static data from build
+          const response = await fetch('/data/journal-latest.json');
+          const staticData: JournalData = await response.json();
+
+          // Check if data is recent enough
+          const dataAge = now - new Date(staticData.lastUpdated).getTime();
+          const maxAge = 6 * 60 * 60 * 1000; // 6 hours
+
+          if (dataAge < maxAge) {
             this.journalData = staticData;
+            this.lastFetch = now;
+          } else {
+            // Try to fetch fresh data (fallback to static if it fails)
+            try {
+              const freshData = await this.fetchFreshData();
+              this.journalData = freshData;
+            } catch {
+              this.journalData = staticData;
+            }
+            this.lastFetch = now;
           }
-          this.lastFetch = now;
         }
       } catch (error) {
         console.warn('Failed to load journal data:', error);
