@@ -69,12 +69,12 @@ A dynamic, responsive website for Neuravox featuring unified news management, au
 
 ### **Data Sources**
 
-```
+\`\`\`
 /data/
 ├── journal-latest.json     # 20 latest journal articles
 ├── local-news.json        # Local posts and external publications
 └── admin-config.json      # Feature flags and settings
-```
+\`\`\`
 
 ## 📦 **DEPLOYMENT**
 
@@ -114,24 +114,24 @@ A dynamic, responsive website for Neuravox featuring unified news management, au
 
 ### **News Service Architecture**
 
-```typescript
+\`\`\`typescript
 // Unified news management
 class NewsService {
   async getCombinedNews(): Promise<CombinedNewsData>
   async searchNews(query: string, options): Promise<NewsArticle[]>
   async shouldShowNotification(): Promise<{ show: boolean; article?: NewsArticle }>
 }
-```
+\`\`\`
 
 ### **Search Implementation**
 
-```typescript
+\`\`\`typescript
 // Advanced search with Fuse.js
 const fuse = new Fuse(articles, {
   keys: ['title', 'excerpt', 'content', 'author', 'categories'],
   threshold: 0.4
 })
-```
+\`\`\`
 
 ### **Journal Sync Workflow**
 
@@ -155,34 +155,34 @@ const fuse = new Fuse(articles, {
 
 ## 🔧 **DEVELOPMENT SCRIPTS**
 
-```bash
+\`\`\`bash
 npm run dev              # Development server
 npm run build            # Production build (includes journal fetch)
 npm run fetch-journal    # Manual journal sync (20 articles)
 npm run lint             # Code quality check
-```
+\`\`\`
 
 ## 📋 **ADMIN CONTROLS**
 
 ### **Disable Notifications**
-```json
+\`\`\`json
 {
   "disable_journal_popups": true,
   "features": {
     "journalNotifications": { "globalDisable": true }
   }
 }
-```
+\`\`\`
 
 ### **Configure Search**
-```json
+\`\`\`json
 {
   "features": {
     "newsSearch": { "enabled": true, "maxResults": 20 },
     "newsFeed": { "showFilters": true, "articlesPerPage": 10 }
   }
 }
-```
+\`\`\`
 
 ## 📚 **CONTENT MANAGEMENT**
 
