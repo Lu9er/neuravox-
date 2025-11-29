@@ -21,7 +21,7 @@ const teamMembers = [
     bio: "Communications strategist and public-health advocate with 10+ years leading national campaigns in nutrition, road safety, and tobacco control. Georgine coordinates multi-stakeholder advocacy and donor-funded initiatives.",
     location: "Uganda",
     linkedin: "https://www.linkedin.com/in/georgine-obwana-7421658a/",
-    image: "/georgine.jpeg",
+    image: "/images/georgine.png",
   },
 ]
 
@@ -64,7 +64,9 @@ export default function TeamPage() {
                       <div className="w-32 h-32 bg-gray-200 rounded-full mx-auto mb-6 overflow-hidden">
                         <Image
                           src={member.image || "/placeholder.svg"}
-                          alt={member.name === "Georgine Obwana" ? "Portrait: Georgine Obwana" : `Photo of ${member.name}`}
+                          alt={
+                            member.name === "Georgine Obwana" ? "Portrait: Georgine Obwana" : `Photo of ${member.name}`
+                          }
                           width={128}
                           height={128}
                           className="w-full h-full object-cover"
@@ -84,7 +86,7 @@ export default function TeamPage() {
                       <Button
                         asChild
                         variant="outline"
-                        className="border-[#046a83] text-[#046a83] hover:bg-[#046a83] hover:text-white"
+                        className="border-[#046a83] text-[#046a83] hover:bg-[#046a83] hover:text-white bg-transparent"
                       >
                         <a
                           href={member.linkedin}

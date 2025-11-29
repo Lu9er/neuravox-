@@ -82,6 +82,41 @@ body {
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+
+  [data-aos] {
+    opacity: 0;
+    transition-property: opacity, transform;
+    transition-duration: 800ms;
+    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  [data-aos].aos-animate {
+    opacity: 1;
+  }
+
+  [data-aos="fade-up"] {
+    transform: translateY(50px);
+  }
+
+  [data-aos="fade-up"].aos-animate {
+    transform: translateY(0);
+  }
+
+  [data-aos="fade-down"] {
+    transform: translateY(-50px);
+  }
+
+  [data-aos="fade-down"].aos-animate {
+    transform: translateY(0);
+  }
+
+  [data-aos="fade-in"] {
+    transform: scale(0.95);
+  }
+
+  [data-aos="fade-in"].aos-animate {
+    transform: scale(1);
+  }
 }
 
 @layer base {

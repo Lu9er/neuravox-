@@ -7,33 +7,32 @@ import JournalNotification from "./journal-notification"
 
 export function ClientLayout({ children }: { children: React.ReactNode }) {
   useEffect(() => {
-    const initAOS = async () => {
-      const AOS = (await import("aos")).default
-      await import("aos/dist/aos.css")
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px",
+    }
 
-      AOS.init({
-        duration: 800,
-        once: true,
-        offset: 50,
-        easing: "ease-out-cubic",
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const delay = entry.target.getAttribute("data-aos-delay")
+          const animationDelay = delay ? Number.parseInt(delay) : 0
+
+          setTimeout(() => {
+            entry.target.classList.add("aos-animate")
+          }, animationDelay)
+
+          observer.unobserve(entry.target)
+        }
       })
-    }
+    }, observerOptions)
 
-    initAOS()
-
-    // Refresh AOS on route changes
-    const handleRouteChange = async () => {
-      const AOS = (await import("aos")).default
-      setTimeout(() => {
-        AOS.refresh()
-      }, 100)
-    }
-
-    // Listen for navigation events
-    window.addEventListener("popstate", handleRouteChange)
+    // Observe all elements with data-aos attribute
+    const elements = document.querySelectorAll("[data-aos]")
+    elements.forEach((el) => observer.observe(el))
 
     return () => {
-      window.removeEventListener("popstate", handleRouteChange)
+      observer.disconnect()
     }
   }, [])
 
