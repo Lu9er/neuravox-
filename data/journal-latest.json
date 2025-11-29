@@ -1,8 +1,19 @@
 {
-  "lastUpdated": "2025-11-23T13:20:10.557Z",
+  "lastUpdated": "2025-11-26T09:27:07.922Z",
   "feedTitle": "Neuravox Journal",
   "feedDescription": "Neuravox Journal publishes sharp, independent writing on AI policy, governance and public interest, with a focus on Africa and globally relevant perspectives.",
   "articles": [
+    {
+      "id": "https://journal.neuravox.org/p/foreign-capital-fragile-sovereignty",
+      "title": "Foreign Capital, Fragile Sovereignty ",
+      "excerpt": "What the UAE's $1B AI Pledge Reveals About Africa's Digital Future - Policy Brief/Op-Ed",
+      "content": "What the UAE's $1B AI Pledge Reveals About Africa's Digital Future - Policy Brief/Op-Ed",
+      "link": "https://journal.neuravox.org/p/foreign-capital-fragile-sovereignty",
+      "publishedAt": "Mon, 24 Nov 2025 21:31:11 GMT",
+      "author": "Neuravox Policy Lab",
+      "categories": [],
+      "image": "https://substackcdn.com/image/fetch/$s_!01cf!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbb890e0f-c0da-41d4-8498-f413f49c755c_2816x1536.png"
+    },
     {
       "id": "https://journal.neuravox.org/p/can-multilateral-actors-co-develop",
       "title": "Can multilateral actors co-develop and fund modular AI governance toolkits for African governments to adapt, pilot and localize?",
@@ -59,6 +70,6 @@
       "image": "https://substackcdn.com/image/fetch/$s_!ZJvW!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdab1401c-f910-44b1-afed-7e2ce5620191_1536x1024.png"
     }
   ],
-  "latestArticleId": "https://journal.neuravox.org/p/can-multilateral-actors-co-develop",
-  "latestArticleDate": "Sun, 06 Jul 2025 16:59:01 GMT"
+  "latestArticleId": "https://journal.neuravox.org/p/foreign-capital-fragile-sovereignty",
+  "latestArticleDate": "Mon, 24 Nov 2025 21:31:11 GMT"
 }
