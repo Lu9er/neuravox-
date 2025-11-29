@@ -1,45 +1,44 @@
-"use client";
-import React, { useState } from "react";
-import dynamic from "next/dynamic";
+"use client"
+import type React from "react"
+import { useState } from "react"
+import dynamic from "next/dynamic"
 
 // Lazy-load Framer Motion only in browser
-const MotionDiv = dynamic(() =>
-  import("framer-motion").then(mod => mod.motion.div), { ssr: false }
-);
+const MotionDiv = dynamic(() => import("framer-motion").then((mod) => mod.motion.div), { ssr: false })
 
-type Result = { success: boolean; message: string } | null;
+type Result = { success: boolean; message: string } | null
 
 const ContactPage: React.FC = () => {
-  const [isPending, setIsPending] = useState(false);
-  const [result, setResult] = useState<Result>(null);
+  const [isPending, setIsPending] = useState(false)
+  const [result, setResult] = useState<Result>(null)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsPending(true);
-    setResult(null);
-    const form = e.currentTarget;
-    const formData = new FormData(form);
+    e.preventDefault()
+    setIsPending(true)
+    setResult(null)
+    const form = e.currentTarget
+    const formData = new FormData(form)
 
     try {
       const res = await fetch("https://formspree.io/f/xldnbeov", {
         method: "POST",
         body: formData,
         headers: { Accept: "application/json" },
-      });
-      const data = await res.json();
+      })
+      const data = await res.json()
       if (res.ok) {
-        setResult({ success: true, message: "Thank you for contacting us! We'll get back to you soon." });
-        form.reset();
-        setTimeout(() => setResult(null), 5000);
+        setResult({ success: true, message: "Thank you for contacting us! We'll get back to you soon." })
+        form.reset()
+        setTimeout(() => setResult(null), 5000)
       } else {
-        setResult({ success: false, message: data?.message || "Something went wrong." });
+        setResult({ success: false, message: data?.message || "Something went wrong." })
       }
     } catch {
-      setResult({ success: false, message: "Something went wrong. Try again." });
+      setResult({ success: false, message: "Something went wrong. Try again." })
     } finally {
-      setIsPending(false);
+      setIsPending(false)
     }
-  };
+  }
 
   return (
     <div className="min-h-screen">
@@ -71,19 +70,51 @@ const ContactPage: React.FC = () => {
             <h2 className="text-2xl font-bold text-[#0a2f58] mb-6">Send us a message</h2>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input type="text" name="name" placeholder="Name *" required disabled={isPending}
-                  className="w-full border rounded px-3 py-2" />
-                <input type="email" name="email" placeholder="Email *" required disabled={isPending}
-                  className="w-full border rounded px-3 py-2" />
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Name *"
+                  required
+                  disabled={isPending}
+                  className="w-full border rounded px-3 py-2"
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email *"
+                  required
+                  disabled={isPending}
+                  className="w-full border rounded px-3 py-2"
+                />
               </div>
-              <input type="text" name="organization" placeholder="Organization" disabled={isPending}
-                className="w-full border rounded px-3 py-2" />
-              <input type="text" name="subject" placeholder="Subject *" required disabled={isPending}
-                className="w-full border rounded px-3 py-2" />
-              <textarea name="message" rows={5} placeholder="Message *" required disabled={isPending}
-                className="w-full border rounded px-3 py-2" />
-              <button type="submit" disabled={isPending}
-                className={`w-full py-2 px-4 rounded bg-[#046a83] text-white font-semibold hover:bg-[#035a6f] ${isPending ? "opacity-60 cursor-not-allowed" : ""}`}>
+              <input
+                type="text"
+                name="organization"
+                placeholder="Organization"
+                disabled={isPending}
+                className="w-full border rounded px-3 py-2"
+              />
+              <input
+                type="text"
+                name="subject"
+                placeholder="Subject *"
+                required
+                disabled={isPending}
+                className="w-full border rounded px-3 py-2"
+              />
+              <textarea
+                name="message"
+                rows={5}
+                placeholder="Message *"
+                required
+                disabled={isPending}
+                className="w-full border rounded px-3 py-2"
+              />
+              <button
+                type="submit"
+                disabled={isPending}
+                className={`w-full py-2 px-4 rounded bg-[#046a83] text-white font-semibold hover:bg-[#035a6f] ${isPending ? "opacity-60 cursor-not-allowed" : ""}`}
+              >
                 {isPending ? "Sending..." : "Send Message"}
               </button>
               {result && (
@@ -109,14 +140,17 @@ const ContactPage: React.FC = () => {
             </div>
             <div className="bg-white p-6 rounded shadow">
               <h3 className="text-[#0a2f58] font-bold text-xl mb-2">Websites</h3>
-              <p><a href="https://nigeria.neuravox.org" className="text-[#046a83] hover:underline">Nigeria</a></p>
-              <p><a href="https://journal.neuravox.org" className="text-[#046a83] hover:underline">Journal</a></p>
+              <p>
+                <a href="https://journal.neuravox.org" className="text-[#046a83] hover:underline">
+                  Journal
+                </a>
+              </p>
             </div>
           </div>
         </div>
       </section>
     </div>
-  );
-};
+  )
+}
 
-export default ContactPage;
+export default ContactPage
