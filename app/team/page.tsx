@@ -10,10 +10,18 @@ const teamMembers = [
   {
     name: "Gideon Abako",
     role: "Founder & Executive Director",
-    bio: "Global health, Humanitarian innovation and AI governance researcher. Led AI supply chain innovation in Uganda and founded Neuravox to push community-aligned AI frameworks in Africa and the Global South.",
+    bio: "AI governance and digital health innovation specialist advancing machine learning systems across Africa. He leads national AI and health informatics projects in Uganda. His work spans source-verification infrastructure for LLMs, AI policy development, and applied machine learning for public health.",
     location: "Uganda",
     linkedin: "https://www.linkedin.com/in/gideonluper",
     image: "/gideon.jpeg",
+  },
+  {
+    name: "Georgine Obwana",
+    role: "Board Member",
+    bio: "Communications strategist and public health advocate with over a decade of experience leading national advocacy in nutrition, road safety, and tobacco control. Georgine coordinates multi-stakeholder coalitions, develops policy communication strategies, and represents civil society in global and national health platforms. Georgine has driven high-impact media engagement, authored advocacy materials, and supported donor-funded initiatives across Uganda.",
+    location: "Uganda",
+    linkedin: "#",
+    image: "/georgine.jpeg",
   },
 ]
 
