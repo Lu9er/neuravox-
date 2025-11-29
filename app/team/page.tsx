@@ -10,7 +10,7 @@ const teamMembers = [
   {
     name: "Gideon Abako",
     role: "Founder & Executive Director",
-    bio: "AI governance and digital health innovation specialist advancing machine learning systems across Africa. He leads national AI and health informatics projects in Uganda. His work spans source-verification infrastructure for LLMs, AI policy development, and applied machine learning for public health.",
+    bio: "AI governance and digital innovation specialist leading applied ML and public-health integrations across Africa. Gideon builds AI frameworks, policy tools and open datasets to support trustworthy systems in low-resource settings.",
     location: "Uganda",
     linkedin: "https://www.linkedin.com/in/gideonluper",
     image: "/gideon.jpeg",
@@ -18,9 +18,9 @@ const teamMembers = [
   {
     name: "Georgine Obwana",
     role: "Board Member",
-    bio: "Communications strategist and public health advocate with over a decade of experience leading national advocacy in nutrition, road safety, and tobacco control. Georgine coordinates multi-stakeholder coalitions, develops policy communication strategies, and represents civil society in global and national health platforms. Georgine has driven high-impact media engagement, authored advocacy materials, and supported donor-funded initiatives across Uganda.",
+    bio: "Communications strategist and public-health advocate with 10+ years leading national campaigns in nutrition, road safety, and tobacco control. Georgine coordinates multi-stakeholder advocacy and donor-funded initiatives.",
     location: "Uganda",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/georgine-obwana-7421658a/",
     image: "/georgine.jpeg",
   },
 ]
@@ -64,7 +64,7 @@ export default function TeamPage() {
                       <div className="w-32 h-32 bg-gray-200 rounded-full mx-auto mb-6 overflow-hidden">
                         <Image
                           src={member.image || "/placeholder.svg"}
-                          alt={`Photo of ${member.name}`}
+                          alt={member.name === "Georgine Obwana" ? "Portrait: Georgine Obwana" : `Photo of ${member.name}`}
                           width={128}
                           height={128}
                           className="w-full h-full object-cover"
