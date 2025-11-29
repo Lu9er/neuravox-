@@ -16,6 +16,14 @@ const partners = [
     logo: "/undp-logo.jpeg",
   },
   {
+    name: "Mozilla Foundation",
+    type: "International Organisation",
+    relationship: "Strategic Partnership",
+    description: "Supporting Neuravox through the VoiceLink Uganda project, focused on open multilingual speech data for building inclusive language AI tools.",
+    focus: ["Language AI", "Open Data", "Community Partnerships"],
+    logo: "/mozilla-foundation-logo.png",
+  },
+  {
     name: "WIPO IP Labs",
     type: "International Organisation",
     relationship: "Innovation Cohort",

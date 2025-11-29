@@ -77,17 +77,17 @@ const pillars = [
 
 const featuredProjects = [
   {
-    title: "VoiceLink Uganda",
-    description:
-      "A Mozilla Foundation-funded project that collects multilingual radio speech in Uganda for building digital language database through structured community partnerships.",
-    status: "Active",
-    tags: ["Language AI", "Community Partnerships", "Uganda", "Mozilla Foundation", "Speech Data"],
-  },
-  {
-    title: "Language AI Accelerator",
-    description: "Partnership with UNDP and Italia G7 Presidency to advance multilingual AI capabilities.",
+    title: "UNDP AI Hub Language AI Accelerator",
+    description: "Partnership with UNDP and Italia G7 Presidency to advance multilingual AI capabilities for sustainable development in Africa.",
     status: "Partnership",
     tags: ["Language AI", "International Cooperation", "Policy"],
+  },
+  {
+    title: "VoiceLink Uganda",
+    description:
+      "VoiceLink Uganda is a Mozilla-funded project that works with community radio stations across Uganda to collect, curate, and publish multilingual speech data. The goal is to create an open, public dataset using the Common Voice platform to support the development of inclusive language AI systems.",
+    status: "Active",
+    tags: ["Language AI", "Community Partnerships", "Uganda", "Mozilla Foundation", "Speech Data"],
   },
 ]
 
