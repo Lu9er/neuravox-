@@ -70,6 +70,7 @@ const collaborationTypes = [
 
 const acknowledgments = [
   "UNDP – Language AI Accelerator and Global Governance Initiatives",
+  "Mozilla Foundation – VoiceLink Uganda Project for Multilingual Speech Data",
   "AUDA-NEPAD – AI Strategy Collaboration and Conference Participation",
   "WIPO IP Labs – Nigeria IP Lab",
 ]
