@@ -25,17 +25,6 @@ jobs:
           if [ -f scripts/fetch-journal.js ]; then node scripts/fetch-journal.js || true; fi
           npm run build
 
-      - name: Debug: show build output
-        run: |
-          echo "=== WORKDIR ==="
-          pwd
-          echo "=== LIST out/ ==="
-          ls -la out || true
-          echo "=== LIST out/data ==="
-          ls -la out/data || echo "no out/data directory"
-          echo "=== show a small preview ==="
-          [ -f out/data/journal-latest.json ] && jq '.lastUpdated, (.articles|length)' out/data/journal-latest.json || echo "no json file in out/data"
-
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
