@@ -1,8 +1,19 @@
 {
-  "lastUpdated": "2025-11-29T14:12:53.920Z",
+  "lastUpdated": "2025-11-30T09:34:00.999Z",
   "feedTitle": "Neuravox Journal",
   "feedDescription": "Neuravox Journal publishes sharp, independent writing on AI policy, governance and public interest, with a focus on Africa and globally relevant perspectives.",
   "articles": [
+    {
+      "id": "https://journal.neuravox.org/p/sovereignty-by-syntax-who-owns-africas",
+      "title": "Sovereignty by Syntax: Who Owns Africa’s Digital Voice?",
+      "excerpt": "The urgent case for classifying language data as critical infrastructure.",
+      "content": "The urgent case for classifying language data as critical infrastructure.",
+      "link": "https://journal.neuravox.org/p/sovereignty-by-syntax-who-owns-africas",
+      "publishedAt": "Sun, 30 Nov 2025 07:31:29 GMT",
+      "author": "Neuravox Policy Lab",
+      "categories": [],
+      "image": "https://substackcdn.com/image/fetch/$s_!ZyCS!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F918e507a-1b2e-4a36-926d-c25489d62c7c_2816x1536.png"
+    },
     {
       "id": "https://journal.neuravox.org/p/foreign-capital-fragile-sovereignty",
       "title": "Foreign Capital, Fragile Sovereignty ",
@@ -70,6 +81,6 @@
       "image": "https://substackcdn.com/image/fetch/$s_!ZJvW!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdab1401c-f910-44b1-afed-7e2ce5620191_1536x1024.png"
     }
   ],
-  "latestArticleId": "https://journal.neuravox.org/p/foreign-capital-fragile-sovereignty",
-  "latestArticleDate": "Mon, 24 Nov 2025 21:31:11 GMT"
+  "latestArticleId": "https://journal.neuravox.org/p/sovereignty-by-syntax-who-owns-africas",
+  "latestArticleDate": "Sun, 30 Nov 2025 07:31:29 GMT"
 }
