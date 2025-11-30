@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion"
 import EnhancedNewsFeed from "@/components/enhanced-news-feed"
+import { Button } from "@/components/ui/button"
+import { ArrowRight, ExternalLink } from "lucide-react"
 
 export default function NewsPage() {
   return (
@@ -28,15 +30,39 @@ export default function NewsPage() {
         <div className="container mx-auto px-4">
           <div data-aos="fade-up" data-aos-delay="200">
             <EnhancedNewsFeed
-              showSearch={true}
-              articlesPerPage={10}
-              showPagination={true}
+              showSearch={false}
+              articlesPerPage={5}
+              showPagination={false}
               showImages={true}
               compact={false}
-              showFilters={true}
+              showFilters={false}
               featuredFirst={true}
             />
           </div>
+
+          {/* See More Button */}
+          <motion.div
+            className="text-center mt-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <Button asChild size="lg" className="bg-[#046a83] hover:bg-[#035a6f] text-white">
+              <a
+                href="https://journal.neuravox.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center"
+              >
+                See More on Neuravox Journal
+                <ExternalLink className="ml-2 h-5 w-5" />
+              </a>
+            </Button>
+            <p className="text-gray-600 mt-4 text-sm">
+              Visit our journal for more in-depth articles, research, and commentary
+            </p>
+          </motion.div>
         </div>
       </section>
     </div>
