@@ -201,7 +201,7 @@ export default function NewsPage() {
       <div className="bg-[#ebf3f6] py-12 lg:py-20">
         <div className="container mx-auto px-4 max-w-7xl">
 
-          {/* Local News & Updates Section */}
+          {/* Latest News & Events Section */}
           {localNews.length > 0 && (
             <motion.section
               className="mb-16"
@@ -210,8 +210,8 @@ export default function NewsPage() {
               transition={{ duration: 0.6 }}
             >
               <div className="flex items-center gap-3 mb-8">
-                <FileText className="h-8 w-8 text-[#046a83]" />
-                <h2 className="text-3xl lg:text-4xl font-bold text-[#0a2f58]">News & Updates</h2>
+                <Newspaper className="h-8 w-8 text-[#046a83]" />
+                <h2 className="text-3xl lg:text-4xl font-bold text-[#0a2f58]">Latest News & Events</h2>
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -236,7 +236,7 @@ export default function NewsPage() {
                       <CardContent className="p-6">
                         <div className="flex items-center gap-2 mb-3">
                           <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#046a83] text-white">
-                            {article.collaboration || 'Neuravox News'}
+                            {article.collaboration || 'News & Events'}
                           </span>
                         </div>
 
@@ -285,15 +285,15 @@ export default function NewsPage() {
             </motion.section>
           )}
 
-          {/* Journal Articles Section */}
+          {/* Journal Articles & Research Section */}
           <motion.section
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <div className="flex items-center gap-3 mb-8">
-              <Rss className="h-8 w-8 text-[#51bccd]" />
-              <h2 className="text-3xl lg:text-4xl font-bold text-[#0a2f58]">Latest Journal Articles</h2>
+              <FileText className="h-8 w-8 text-[#51bccd]" />
+              <h2 className="text-3xl lg:text-4xl font-bold text-[#0a2f58]">Journal Articles & Research</h2>
             </div>
 
             {error ? (
@@ -333,7 +333,7 @@ export default function NewsPage() {
                       <CardContent className="p-6">
                         <div className="flex items-center gap-2 mb-3">
                           <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#51bccd] text-white">
-                            Journal Article
+                            Research Article
                           </span>
                         </div>
 
