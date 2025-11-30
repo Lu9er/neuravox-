@@ -242,7 +242,7 @@ export default function PolicyLabPage() {
           >
             <h2 className="text-3xl lg:text-4xl font-bold text-[#0a2f58] mb-4">Research Themes</h2>
             <p className="text-xl text-[#1a1a1a] max-w-3xl mx-auto">
-              Four grounded, non-overlapping domains anchoring our strategic research and policy work
+              Four core domains anchoring our strategic research and policy work
             </p>
           </motion.div>
 
@@ -285,6 +285,7 @@ export default function PolicyLabPage() {
 
                       {isExpanded && (
                         <motion.div
+                          key={`expanded-${theme.id}`}
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: "auto" }}
                           exit={{ opacity: 0, height: 0 }}
@@ -440,8 +441,14 @@ export default function PolicyLabPage() {
             >
               <Card className="h-full border-0 shadow-lg">
                 <CardContent className="p-8 text-center">
-                  <div className="w-24 h-24 bg-[#046a83] rounded-full mx-auto mb-6 flex items-center justify-center">
-                    <Brain className="h-12 w-12 text-white" />
+                  <div className="w-24 h-24 mx-auto mb-6 overflow-hidden rounded-full">
+                    <Image
+                      src="/gideon.jpeg"
+                      alt="Gideon Abako"
+                      width={96}
+                      height={96}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <h3 className="text-2xl font-bold text-[#0a2f58] mb-2">Gideon Abako</h3>
                   <p className="text-[#046a83] font-medium mb-4">Founder</p>
@@ -460,8 +467,14 @@ export default function PolicyLabPage() {
             >
               <Card className="h-full border-0 shadow-lg">
                 <CardContent className="p-8 text-center">
-                  <div className="w-24 h-24 bg-[#046a83] rounded-full mx-auto mb-6 flex items-center justify-center">
-                    <MessageSquare className="h-12 w-12 text-white" />
+                  <div className="w-24 h-24 mx-auto mb-6 overflow-hidden rounded-full">
+                    <Image
+                      src="/images/georgine.png"
+                      alt="Georgina Obwana"
+                      width={96}
+                      height={96}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <h3 className="text-2xl font-bold text-[#0a2f58] mb-2">Georgina Obwana</h3>
                   <p className="text-[#046a83] font-medium mb-4">Communications Strategist</p>
@@ -563,9 +576,9 @@ export default function PolicyLabPage() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white hover:text-[#1d4e63]"
+                className="border-white text-white hover:bg-white hover:text-[#1d4e63] bg-transparent"
               >
-                <a href="/contact">
+                <a href="/contact" className="text-white">
                   Contact Our Team
                 </a>
               </Button>
