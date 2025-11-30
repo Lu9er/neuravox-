@@ -10,9 +10,9 @@ The Neuravox website is **completely dynamic** - NO hardcoding:
 ## Test Results (November 30, 2025)
 
 ### Local Test:
-```bash
+\`\`\`bash
 curl -s "http://localhost:3000/api/journal" | jq '.articles[0]'
-```
+\`\`\`
 **Result**: Shows "Sovereignty by Syntax: Who Owns Africa's Digital Voice?" (Published: 2025-11-30)
 
 ### Production Issue:
@@ -34,8 +34,8 @@ The production site shows old data because of Vercel's CDN cache. This has been 
 - ✅ News page: Fetches from API endpoint
 
 ## To Force Update on Production:
-```bash
+\`\`\`bash
 curl -s "https://neuravox.org/api/journal?nocache=true"
-```
+\`\`\`
 
 This will bypass the cache and fetch the absolute latest data from your RSS feed.
