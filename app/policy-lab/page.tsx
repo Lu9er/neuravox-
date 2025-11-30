@@ -251,7 +251,7 @@ export default function PolicyLabPage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto items-start">
             {researchThemes.map((theme, index) => {
               const IconComponent = theme.icon
               const isExpanded = policyLabExpandedTheme === theme.id
@@ -264,7 +264,7 @@ export default function PolicyLabPage() {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <Card className="h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300">
+                  <Card className="h-fit border-0 shadow-lg hover:shadow-xl transition-all duration-300">
                     <CardContent className="p-8">
                       <div className="flex items-center gap-4 mb-6">
                         <div className="w-12 h-12 bg-[#046a83] rounded-lg flex items-center justify-center">

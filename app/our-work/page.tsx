@@ -156,7 +156,7 @@ export default function OurWorkPage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 items-start">
             {featuredProjects.map((project, index) => (
               <motion.div
                 key={index}
@@ -165,7 +165,7 @@ export default function OurWorkPage() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="h-full border-0 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <Card className="h-fit border-0 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                   <CardContent className="p-6">
                     <div className="flex justify-between items-start mb-4">
                       <h3 className="text-xl font-semibold text-[#0a2f58]">{project.title}</h3>
