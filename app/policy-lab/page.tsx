@@ -574,17 +574,14 @@ export default function PolicyLabPage() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white hover:text-[#1d4e63] bg-transparent"
+                className="border-white text-white hover:bg-white hover:text-[#1d4e63]"
               >
-                <a href="/contact" className="text-white">
+                <a href="/contact">
                   Contact Our Team
                 </a>
               </Button>
             </div>
 
-            <p className="text-blue-100 mt-6 text-sm">
-              Email: contact@neuravox.org
-            </p>
           </motion.div>
         </div>
       </section>
