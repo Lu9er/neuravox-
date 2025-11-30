@@ -107,11 +107,15 @@ export function EnhancedNewsFeed({
     )
   }
 
-  if (loading) {
+  // Show loading skeletons immediately to prevent blank screen
+  if (loading && !newsData) {
     return (
       <div className="space-y-4">
+        <div className="text-center mb-4">
+          <p className="text-gray-600">Loading latest articles...</p>
+        </div>
         {[...Array(3)].map((_, i) => (
-          <Card key={i} className="animate-pulse" data-aos="fade-up" data-aos-delay={i * 100}>
+          <Card key={i} className="animate-pulse">
             <CardContent className="p-6">
               <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
               <div className="h-3 bg-gray-200 rounded w-1/2 mb-4"></div>
@@ -123,13 +127,21 @@ export function EnhancedNewsFeed({
     )
   }
 
-  if (error) {
+  if (error && !newsData) {
     return (
-      <Card className="border-red-200 bg-red-50" data-aos="fade-up">
+      <Card className="border-orange-200 bg-orange-50">
         <CardContent className="p-6 text-center">
-          <p className="text-red-600 mb-4">Failed to load news articles</p>
-          <Button onClick={refetch} variant="outline" size="sm">
+          <p className="text-orange-600 mb-4">Having trouble loading articles</p>
+          <p className="text-sm text-gray-600 mb-4">Please check your connection and try again</p>
+          <Button onClick={() => refetch()} variant="outline" size="sm" className="mr-2">
             Try Again
+          </Button>
+          <Button
+            onClick={() => window.location.reload()}
+            variant="outline"
+            size="sm"
+          >
+            Refresh Page
           </Button>
         </CardContent>
       </Card>

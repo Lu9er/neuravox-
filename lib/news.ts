@@ -271,25 +271,44 @@ export function useNews() {
   const [newsData, setNewsData] = useState<CombinedNewsData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [initialized, setInitialized] = useState(false);
 
   const service = NewsService.getInstance();
 
   const fetchData = async (forceRefresh = false) => {
     try {
-      setLoading(true);
+      // Don't set loading true if we already have data (prevents flashing)
+      if (!newsData || forceRefresh) {
+        setLoading(true);
+      }
       setError(null);
       const data = await service.getCombinedNews(forceRefresh);
       setNewsData(data);
+      setInitialized(true);
     } catch (err) {
+      console.error('Failed to fetch news:', err);
       setError(err instanceof Error ? err.message : 'Failed to fetch news data');
+      // Try to use cached data even on error
+      try {
+        const cachedData = await service.getCombinedNews(false);
+        if (cachedData) {
+          setNewsData(cachedData);
+          setInitialized(true);
+        }
+      } catch {
+        // Ignore cache errors
+      }
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    // Ensure data fetches immediately and reliably
+    if (!initialized) {
+      fetchData();
+    }
+  }, [initialized]);
 
   return {
     newsData,
