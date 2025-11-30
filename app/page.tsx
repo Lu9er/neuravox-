@@ -132,7 +132,7 @@ export default function HomePage() {
           <div data-aos="fade-up" data-aos-delay="200">
             <EnhancedNewsFeed
               showSearch={false}
-              articlesPerPage={3}
+              articlesPerPage={5}
               showPagination={false}
               showImages={true}
               compact={true}
@@ -148,10 +148,10 @@ export default function HomePage() {
             transition={{ delay: 0.4, duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <Button asChild variant="outline" size="lg" className="border-[#046a83] text-[#046a83] hover:bg-[#046a83] hover:text-white">
-              <Link href="/news">
-                View All Articles <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
+            <Button asChild size="lg" className="bg-[#046a83] hover:bg-[#035a6f] text-white">
+              <a href="https://journal.neuravox.org" target="_blank" rel="noopener noreferrer">
+                See More on Neuravox Journal <ArrowRight className="ml-2 h-4 w-4" />
+              </a>
             </Button>
           </motion.div>
         </div>
