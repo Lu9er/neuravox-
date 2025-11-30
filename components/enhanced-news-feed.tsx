@@ -43,6 +43,7 @@ export function EnhancedNewsFeed({
   featuredFirst = true
 }: EnhancedNewsFeedProps) {
   const { newsData, loading, error, refetch } = useNews()
+  const [autoRetryCount, setAutoRetryCount] = useState(0)
   const {
     searchQuery,
     setSearchQuery,
@@ -93,6 +94,19 @@ export function EnhancedNewsFeed({
     setCurrentPage(1)
   }, [searchQuery, selectedCategories, selectedType])
 
+  // Auto-retry if no data after 2 seconds
+  React.useEffect(() => {
+    if (!loading && !newsData && !error && autoRetryCount < 3) {
+      const timer = setTimeout(() => {
+        console.log(`Auto-retrying news fetch, attempt ${autoRetryCount + 1}`);
+        setAutoRetryCount(prev => prev + 1);
+        refetch();
+      }, 2000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [loading, newsData, error, autoRetryCount, refetch])
+
   const handleShare = (article: NewsArticle) => {
     const url = article.externalLink || `${window.location.origin}${article.link}`
     const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`
@@ -112,7 +126,10 @@ export function EnhancedNewsFeed({
     return (
       <div className="space-y-4">
         <div className="text-center mb-4">
-          <p className="text-gray-600">Loading latest articles...</p>
+          <p className="text-gray-600">
+            Loading latest articles...
+            {autoRetryCount > 0 && ` (Retry ${autoRetryCount}/3)`}
+          </p>
         </div>
         {[...Array(3)].map((_, i) => (
           <Card key={i} className="animate-pulse">

@@ -304,11 +304,21 @@ export function useNews() {
   };
 
   useEffect(() => {
-    // Ensure data fetches immediately and reliably
-    if (!initialized) {
-      fetchData();
-    }
-  }, [initialized]);
+    // Force immediate fetch on mount
+    fetchData();
+  }, []);
+
+  // Also ensure we fetch if we're not initialized after a timeout
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!initialized && !loading) {
+        console.log('Force fetching due to initialization timeout');
+        fetchData();
+      }
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [initialized, loading]);
 
   return {
     newsData,
