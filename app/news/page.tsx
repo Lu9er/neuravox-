@@ -174,7 +174,7 @@ export default function NewsPage() {
             ) : null}
 
             {/* Articles */}
-            <div className="space-y-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {articles.map((article, index) => (
                 <motion.div
                   key={index}
@@ -182,9 +182,24 @@ export default function NewsPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1, duration: 0.5 }}
                 >
-                  <Card className="hover:shadow-lg transition-shadow duration-300">
+                  <Card className="h-full hover:shadow-xl transition-all duration-300 border-0 shadow-lg overflow-hidden">
+                    {article.image && (
+                      <div className="aspect-video overflow-hidden">
+                        <img
+                          src={article.image}
+                          alt={article.title}
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    )}
                     <CardContent className="p-6">
-                      <h3 className="text-xl font-bold text-[#0a2f58] mb-3 hover:text-[#046a83] transition-colors">
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#51bccd] text-white">
+                          Journal Article
+                        </span>
+                      </div>
+
+                      <h3 className="text-lg font-bold text-[#0a2f58] mb-3 hover:text-[#046a83] transition-colors line-clamp-2">
                         <a href={article.link} target="_blank" rel="noopener noreferrer">
                           {article.title}
                         </a>
@@ -206,12 +221,13 @@ export default function NewsPage() {
                       </div>
 
                       {article.summary && (
-                        <p className="text-gray-700 mb-4 line-clamp-3">{article.summary}</p>
+                        <p className="text-gray-700 mb-4 text-sm line-clamp-3">{article.summary}</p>
                       )}
 
                       <Button
                         asChild
                         variant="outline"
+                        size="sm"
                         className="border-[#046a83] text-[#046a83] hover:bg-[#046a83] hover:text-white"
                       >
                         <a href={article.link} target="_blank" rel="noopener noreferrer">
