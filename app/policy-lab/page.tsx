@@ -574,9 +574,9 @@ export default function PolicyLabPage() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white hover:text-[#1d4e63]"
+                className="border-white text-white bg-transparent hover:bg-white hover:text-[#1d4e63]"
               >
-                <a href="/contact">
+                <a href="/contact" className="text-white hover:text-[#1d4e63]">
                   Contact Our Team
                 </a>
               </Button>
