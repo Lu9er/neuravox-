@@ -205,24 +205,17 @@ export default function OurWorkPage() {
                         </Button>
 
                         {expandedProject === project.id && project.keyActivities && (
-                          <motion.div
-                            key={`expanded-${project.id}`}
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: "auto" }}
-                            exit={{ opacity: 0, height: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="mt-4 pt-4 border-t border-gray-200"
-                          >
+                          <div className="mt-4 pt-4 border-t border-gray-200">
                             <h4 className="font-semibold text-[#0a2f58] mb-3">Key Activities:</h4>
                             <ul className="space-y-2">
                               {project.keyActivities.map((activity, idx) => (
-                                <li key={idx} className="flex items-start gap-3">
+                                <li key={`${project.id}-activity-${idx}`} className="flex items-start gap-3">
                                   <Database className="h-4 w-4 text-[#046a83] mt-0.5 flex-shrink-0" />
                                   <span className="text-sm text-[#1a1a1a]">{activity}</span>
                                 </li>
                               ))}
                             </ul>
-                          </motion.div>
+                          </div>
                         )}
                       </div>
                     )}

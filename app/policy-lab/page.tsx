@@ -208,7 +208,10 @@ export default function PolicyLabPage() {
   }, [])
 
   const toggleTheme = (themeId: string) => {
-    setExpandedTheme(expandedTheme === themeId ? null : themeId)
+    console.log('Policy Lab - Toggle called for:', themeId, 'Current expanded:', expandedTheme)
+    const newState = expandedTheme === themeId ? null : themeId
+    console.log('Policy Lab - Setting expanded to:', newState)
+    setExpandedTheme(newState)
   }
 
   // Reset expanded state when component mounts to prevent interference
@@ -255,6 +258,7 @@ export default function PolicyLabPage() {
             {researchThemes.map((theme, index) => {
               const IconComponent = theme.icon
               const isExpanded = expandedTheme === theme.id
+              console.log(`Policy Lab - Rendering ${theme.id}: expanded=${isExpanded}, expandedTheme=${expandedTheme}`)
 
               return (
                 <motion.div
@@ -289,24 +293,17 @@ export default function PolicyLabPage() {
                       </Button>
 
                       {expandedTheme === theme.id && (
-                        <motion.div
-                          key={`expanded-${theme.id}`}
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.3 }}
-                          className="mt-6 pt-6 border-t border-gray-200"
-                        >
+                        <div className="mt-6 pt-6 border-t border-gray-200">
                           <h4 className="font-semibold text-[#0a2f58] mb-3">Key Areas:</h4>
                           <ul className="space-y-2">
                             {theme.details.map((detail, idx) => (
-                              <li key={idx} className="flex items-start gap-3">
+                              <li key={`${theme.id}-detail-${idx}`} className="flex items-start gap-3">
                                 <Target className="h-4 w-4 text-[#046a83] mt-0.5 flex-shrink-0" />
                                 <span className="text-sm text-[#1a1a1a]">{detail}</span>
                               </li>
                             ))}
                           </ul>
-                        </motion.div>
+                        </div>
                       )}
                     </CardContent>
                   </Card>
