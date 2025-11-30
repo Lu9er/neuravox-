@@ -1,19 +1,20 @@
 {
-  "lastUpdated": "2025-11-23T11:00:00.000Z",
+  "lastUpdated": "2025-11-30T10:00:00.000Z",
   "articles": [
     {
-      "id": "undp-language-ai-community-paper",
-      "title": "Scaling AI for Language: Community-Driven Approaches to Multilingual AI Development",
-      "excerpt": "A collaborative community paper exploring pathways for scaling AI language technologies through community partnerships and multilateral cooperation.",
-      "content": "A comprehensive analysis of community-driven approaches to multilingual AI development, examining how international partnerships can accelerate inclusive language technology deployment across diverse communities.",
-      "link": "https://journal.neuravox.org",
+      "id": "ai-hub-sustainable-development-community-paper",
+      "title": "Scaling Language Data Ecosystems to Drive Industrial Development Growth",
+      "excerpt": "Neuravox contributes to groundbreaking community paper for the AI Hub for Sustainable Development, exploring collaborative approaches to AI-driven industrial growth across Africa and G7 countries.",
+      "content": "As part of a collaborative co-design process involving partners from Africa, Italy, G7 countries, and UNDP, this community paper represents a shared commitment to accelerating AI-driven industrial growth with Africa. The initiative focuses on steering local, regional, and global private sector collective action across the African continent to ensure AI benefits all communities through sustainable development approaches.",
+      "link": "/news/ai-hub-community-paper",
       "externalLink": "https://cdn.prod.website-files.com/66e31d90ea60e260f5ea025f/68546ed270a71196702c0081_Community%20Paper_Final%20for%20AI%20Hub%20Launch%20-%20REVISED%20VERSION%20(1).pdf",
-      "publishedAt": "2024-11-01T10:00:00Z",
-      "author": "UNDP & Neuravox",
-      "categories": ["UNDP", "Language AI", "Community Paper", "Scaling AI", "Collaboration"],
-      "type": "external",
+      "publishedAt": "2025-06-20T09:00:00Z",
+      "author": "Neuravox & AI Hub Partners",
+      "categories": ["AI Hub", "Sustainable Development", "Community Paper", "Africa", "G7", "UNDP"],
+      "type": "local",
       "image": null,
-      "featured": true
+      "featured": true,
+      "collaboration": "AI Hub for Sustainable Development"
     }
   ]
 }
