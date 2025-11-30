@@ -276,14 +276,14 @@ export default function PolicyLabPage() {
                         size="sm"
                         className="border-[#046a83] text-[#046a83] hover:bg-[#046a83] hover:text-white"
                       >
-                        {isExpanded ? (
+                        {expandedTheme === theme.id ? (
                           <>Less Details <ChevronUp className="ml-2 h-4 w-4" /></>
                         ) : (
                           <>Read More <ChevronDown className="ml-2 h-4 w-4" /></>
                         )}
                       </Button>
 
-                      {isExpanded && (
+                      {expandedTheme === theme.id && (
                         <motion.div
                           key={`expanded-${theme.id}`}
                           initial={{ opacity: 0, height: 0 }}
