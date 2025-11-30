@@ -178,7 +178,7 @@ const getStatusColor = (status: string) => {
 }
 
 export default function PolicyLabPage() {
-  const [expandedTheme, setExpandedTheme] = useState<string | null>(null)
+  const [policyLabExpandedTheme, setPolicyLabExpandedTheme] = useState<string | null>(null)
   const [journalInsights, setJournalInsights] = useState<any[]>([])
   const [insightsLoading, setInsightsLoading] = useState(true)
 
@@ -207,16 +207,13 @@ export default function PolicyLabPage() {
     fetchInsights()
   }, [])
 
-  const toggleTheme = (themeId: string) => {
-    console.log('Policy Lab - Toggle called for:', themeId, 'Current expanded:', expandedTheme)
-    const newState = expandedTheme === themeId ? null : themeId
-    console.log('Policy Lab - Setting expanded to:', newState)
-    setExpandedTheme(newState)
+  const togglePolicyLabTheme = (themeId: string) => {
+    setPolicyLabExpandedTheme(current => current === themeId ? null : themeId)
   }
 
   // Reset expanded state when component mounts to prevent interference
   useEffect(() => {
-    setExpandedTheme(null)
+    setPolicyLabExpandedTheme(null)
   }, [])
 
   return (
@@ -257,8 +254,7 @@ export default function PolicyLabPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {researchThemes.map((theme, index) => {
               const IconComponent = theme.icon
-              const isExpanded = expandedTheme === theme.id
-              console.log(`Policy Lab - Rendering ${theme.id}: expanded=${isExpanded}, expandedTheme=${expandedTheme}`)
+              const isExpanded = policyLabExpandedTheme === theme.id
 
               return (
                 <motion.div
@@ -280,19 +276,19 @@ export default function PolicyLabPage() {
                       <p className="text-[#1a1a1a] leading-relaxed mb-6">{theme.summary}</p>
 
                       <Button
-                        onClick={() => toggleTheme(theme.id)}
+                        onClick={() => togglePolicyLabTheme(theme.id)}
                         variant="outline"
                         size="sm"
                         className="border-[#046a83] text-[#046a83] hover:bg-[#046a83] hover:text-white"
                       >
-                        {expandedTheme === theme.id ? (
+                        {policyLabExpandedTheme === theme.id ? (
                           <>Less Details <ChevronUp className="ml-2 h-4 w-4" /></>
                         ) : (
                           <>Read More <ChevronDown className="ml-2 h-4 w-4" /></>
                         )}
                       </Button>
 
-                      {expandedTheme === theme.id && (
+                      {policyLabExpandedTheme === theme.id && (
                         <div className="mt-6 pt-6 border-t border-gray-200">
                           <h4 className="font-semibold text-[#0a2f58] mb-3">Key Areas:</h4>
                           <ul className="space-y-2">

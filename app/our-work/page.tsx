@@ -110,15 +110,15 @@ const featuredProjects = [
 ]
 
 export default function OurWorkPage() {
-  const [expandedProject, setExpandedProject] = useState<string | null>(null)
+  const [ourWorkExpandedProject, setOurWorkExpandedProject] = useState<string | null>(null)
 
-  const toggleProject = (projectId: string) => {
-    setExpandedProject(expandedProject === projectId ? null : projectId)
+  const toggleOurWorkProject = (projectId: string) => {
+    setOurWorkExpandedProject(current => current === projectId ? null : projectId)
   }
 
   // Reset expanded state when component mounts to prevent interference
   useEffect(() => {
-    setExpandedProject(null)
+    setOurWorkExpandedProject(null)
   }, [])
 
   return (
@@ -192,19 +192,19 @@ export default function OurWorkPage() {
                     {project.keyActivities && project.keyActivities.length > 0 && (
                       <div className="mt-4">
                         <Button
-                          onClick={() => toggleProject(project.id)}
+                          onClick={() => toggleOurWorkProject(project.id)}
                           variant="outline"
                           size="sm"
                           className="border-[#046a83] text-[#046a83] hover:bg-[#046a83] hover:text-white"
                         >
-                          {expandedProject === project.id ? (
+                          {ourWorkExpandedProject === project.id ? (
                             <>Less Details <ChevronUp className="ml-2 h-4 w-4" /></>
                           ) : (
                             <>Key Activities <ChevronDown className="ml-2 h-4 w-4" /></>
                           )}
                         </Button>
 
-                        {expandedProject === project.id && project.keyActivities && (
+                        {ourWorkExpandedProject === project.id && project.keyActivities && (
                           <div className="mt-4 pt-4 border-t border-gray-200">
                             <h4 className="font-semibold text-[#0a2f58] mb-3">Key Activities:</h4>
                             <ul className="space-y-2">
