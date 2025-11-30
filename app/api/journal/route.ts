@@ -61,9 +61,16 @@ export async function GET(req: NextRequest) {
   try {
     const data = await fetchAndParseFeed()
 
-    // Cache at CDN edge for 10 minutes, allow stale while revalidate 60s
+    // Check if we should bypass cache (useful for forcing updates)
+    const searchParams = req.nextUrl.searchParams
+    const noCache = searchParams.get('nocache') === 'true'
+
+    // Cache at CDN edge for 1 minute, allow stale while revalidate immediately
+    // This ensures fresh content while still providing some caching benefits
     const headers = {
-      'Cache-Control': 's-maxage=600, stale-while-revalidate=60',
+      'Cache-Control': noCache
+        ? 'no-cache, no-store, must-revalidate'
+        : 's-maxage=60, stale-while-revalidate=10',
       'Content-Type': 'application/json',
     }
 
