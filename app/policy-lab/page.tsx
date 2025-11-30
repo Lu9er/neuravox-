@@ -211,6 +211,11 @@ export default function PolicyLabPage() {
     setExpandedTheme(expandedTheme === themeId ? null : themeId)
   }
 
+  // Reset expanded state when component mounts to prevent interference
+  useEffect(() => {
+    setExpandedTheme(null)
+  }, [])
+
   return (
     <div className="min-h-screen">
       {/* SECTION A - Hero / Positioning */}

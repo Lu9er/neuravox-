@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Shield, Globe, FileText, Brain, Users, Lightbulb, ChevronDown, ChevronUp, Database } from "lucide-react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 const pillars = [
   {
@@ -116,6 +116,11 @@ export default function OurWorkPage() {
     setExpandedProject(expandedProject === projectId ? null : projectId)
   }
 
+  // Reset expanded state when component mounts to prevent interference
+  useEffect(() => {
+    setExpandedProject(null)
+  }, [])
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -184,7 +189,7 @@ export default function OurWorkPage() {
                       ))}
                     </div>
 
-                    {project.keyActivities && (
+                    {project.keyActivities && project.keyActivities.length > 0 && (
                       <div className="mt-4">
                         <Button
                           onClick={() => toggleProject(project.id)}
@@ -199,7 +204,7 @@ export default function OurWorkPage() {
                           )}
                         </Button>
 
-                        {expandedProject === project.id && (
+                        {expandedProject === project.id && project.keyActivities && (
                           <motion.div
                             key={`expanded-${project.id}`}
                             initial={{ opacity: 0, height: 0 }}
