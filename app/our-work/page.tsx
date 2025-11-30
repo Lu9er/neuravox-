@@ -3,7 +3,9 @@
 import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Shield, Globe, FileText, Brain, Users, Lightbulb } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Shield, Globe, FileText, Brain, Users, Lightbulb, ChevronDown, ChevronUp, Database } from "lucide-react"
+import { useState } from "react"
 
 const pillars = [
   {
@@ -77,21 +79,43 @@ const pillars = [
 
 const featuredProjects = [
   {
+    id: "undp-ai-hub",
     title: "UNDP AI Hub Language AI Accelerator",
     description: "Partnership with UNDP and Italia G7 Presidency to advance multilingual AI capabilities for sustainable development in Africa.",
     status: "Partnership",
     tags: ["Language AI", "International Cooperation", "Policy"],
+    keyActivities: null
   },
   {
+    id: "voicelink-uganda",
     title: "VoiceLink Uganda",
     description:
       "VoiceLink Uganda is a Mozilla-funded project that works with community radio stations across Uganda to collect, curate, and publish multilingual speech data. The goal is to create an open, public dataset using the Common Voice platform to support the development of inclusive language AI systems.",
     status: "Active",
     tags: ["Language AI", "Community Partnerships", "Uganda", "Mozilla Foundation", "Speech Data"],
+    keyActivities: null
+  },
+  {
+    id: "cldc",
+    title: "Community Language Data Cooperative (CLDC)",
+    description: "The Community Language Data Cooperative supports Ugandan communities to document oral heritage, build language datasets and gain AI-related skills. It strengthens digital inclusion by enabling speakers of low-resource languages to participate in AI development through community-led data governance, training, and dataset creation.",
+    status: "Active",
+    tags: ["Language Data", "Community Governance", "Uganda", "Digital Inclusion", "Oral Heritage"],
+    keyActivities: [
+      "Community-led collection of oral histories in Lukonzo, Lusamia, and Kakwa",
+      "Training contributors in audio quality, metadata, and dataset preparation for AI models",
+      "Building cooperative governance structures that give communities control over their data"
+    ]
   },
 ]
 
 export default function OurWorkPage() {
+  const [expandedProject, setExpandedProject] = useState<string | null>(null)
+
+  const toggleProject = (projectId: string) => {
+    setExpandedProject(expandedProject === projectId ? null : projectId)
+  }
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -127,7 +151,7 @@ export default function OurWorkPage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             {featuredProjects.map((project, index) => (
               <motion.div
                 key={index}
@@ -152,13 +176,51 @@ export default function OurWorkPage() {
                       </Badge>
                     </div>
                     <p className="text-[#1a1a1a] mb-6 leading-relaxed">{project.description}</p>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 mb-4">
                       {project.tags.map((tag, tagIndex) => (
                         <Badge key={tagIndex} variant="outline" className="text-xs">
                           {tag}
                         </Badge>
                       ))}
                     </div>
+
+                    {project.keyActivities && (
+                      <div className="mt-4">
+                        <Button
+                          onClick={() => toggleProject(project.id)}
+                          variant="outline"
+                          size="sm"
+                          className="border-[#046a83] text-[#046a83] hover:bg-[#046a83] hover:text-white"
+                        >
+                          {expandedProject === project.id ? (
+                            <>Less Details <ChevronUp className="ml-2 h-4 w-4" /></>
+                          ) : (
+                            <>Key Activities <ChevronDown className="ml-2 h-4 w-4" /></>
+                          )}
+                        </Button>
+
+                        {expandedProject === project.id && (
+                          <motion.div
+                            key={`expanded-${project.id}`}
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="mt-4 pt-4 border-t border-gray-200"
+                          >
+                            <h4 className="font-semibold text-[#0a2f58] mb-3">Key Activities:</h4>
+                            <ul className="space-y-2">
+                              {project.keyActivities.map((activity, idx) => (
+                                <li key={idx} className="flex items-start gap-3">
+                                  <Database className="h-4 w-4 text-[#046a83] mt-0.5 flex-shrink-0" />
+                                  <span className="text-sm text-[#1a1a1a]">{activity}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </motion.div>
+                        )}
+                      </div>
+                    )}
                   </CardContent>
                 </Card>
               </motion.div>
